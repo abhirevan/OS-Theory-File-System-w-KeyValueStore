@@ -1,0 +1,10 @@
+/.datafile*
+/.kvstoremapping
+/.kvstoremeta
+/checkpoint1_test
+/checkpoint_userinput1_test
+/kvstore_test
+/libkvstorelib.a
+/*.h.gch
+/*.o
+/.nfs*
