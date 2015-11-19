@@ -6,6 +6,13 @@
  * Author:  Abhijit Shanbhag<abhijit.shanbhag@rutgers.edu>
  * 		    Priyanka Dhingra<pd374@scarletmail.rutgers.edu>
  */
+/*
+ * Further improvements:
+ * 	Use variable MAX block counts
+ * 	Use char[] or bitmap for free blocks
+ * 	Open files when required
+ * 	Use logging for rollback
+ */
 #include<stdio.h>
 #include<malloc.h>
 #include<string.h>
@@ -174,9 +181,6 @@ int find_first_free_data_block( data_block_type) {
 /**********************************************************************
  *Library functions
  *********************************************************************/
-/*
- * TODO Optimize by opening only the required files
- */
 int size(void* keyPtr) {
 	int sizeval;
 	//Key Value for the HT
@@ -204,9 +208,6 @@ int size(void* keyPtr) {
 		return 0;
 	return sizeval;
 }
-/*
- * TODO implement incomplete files
- */
 int put(void* keyPtr, void* valPtr, int size) {
 	int data_block_type = determine_data_block_type(size);
 	//Key Value for the HT
@@ -258,9 +259,6 @@ int put(void* keyPtr, void* valPtr, int size) {
 	close_kvstore_files();
 	return 1;
 }
-/*
- * TODO optimize here
- */
 int get(void* keyPtr, void* valPtr, int buffer_size) {
 	int sizeval = size(keyPtr);
 	//Key Value for the HT
@@ -285,9 +283,6 @@ int get(void* keyPtr, void* valPtr, int buffer_size) {
 	close_kvstore_files();
 	return 1;
 }
-/*
- *
- */
 int delete(void* keyPtr) {
 	int sizeval = size(keyPtr);
 	//Key Value for the HT
