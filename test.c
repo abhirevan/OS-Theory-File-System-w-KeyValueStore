@@ -4,6 +4,7 @@
 #include "kvstore.h"
 
 int main() {
+
 	int key = 3;
 	int input = 100;
 	int status,sz;
@@ -18,4 +19,6 @@ int main() {
 	status = get(&key, result, sz);
 	printf("GET operation on key: %d returns status: %d\n", key, status);
 	printf("Result: %d \n", *((int*)result));
+
+
 }

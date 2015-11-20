@@ -10,8 +10,9 @@
 #define SB_BLK 0
 #define INODE_BM_BLK 1
 #define DATA_BM_BLK 2
-#define ROOT_INODE_BLK 2
+#define START_INODE_BLK 3
 #define MAX_INODES 10
+#define START_DATA_BLK (START_INODE_BLK+MAX_INODES)
 #define MAX_DATA_BLK_PER_INODE 10
 #define MAX_DATA_BLKS MAX_INODES*MAX_DATA_BLK_PER_INODE
 /**********************************************************************
@@ -22,6 +23,10 @@ typedef struct inode {
 	int size;
 	int data[MAX_DATA_BLK_PER_INODE];
 } inode_t;
+typedef struct dir_record {
+	char fname[32];
+	int block_num;
+} inode_dir_t;
 /**********************************************************************
  *Library functions
  *********************************************************************/
