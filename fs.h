@@ -17,9 +17,11 @@
  * Data structures
  *********************************************************************/
 typedef struct inode {
-	char type; //0 -> Regular 1-> Directory
-	char[MAX_DATA_BLK_PER_INODE] data;
+	int mode; //0 -> Regular 1-> Directory
+	int size;
+	int data[MAX_DATA_BLK_PER_INODE];
 } inode_t;
 /**********************************************************************
  *Library functions
  *********************************************************************/
+inode_t fetch_inode(const char *path);
