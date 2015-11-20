@@ -18,25 +18,35 @@
  ********************************************************************/
 char bm_inode[MAX_INODES];
 char bm_data[MAX_DATA_BLKS];
+int inmem_flag = 0;
 /*********************************************************************
  * Helper functions
  ********************************************************************/
-int check_fs_setup(){
 
+void init_fs() {
+	//Init Root Inode blk
+
+	//Init BM for data
+	//Init BM for inode
+	//Update SB
 }
-void init(){
-
-}
-void load_super_block() {
-
-}
-
 void load_inode_bm() {
 
 }
 
 void load_data_bm() {
 
+}
+int check_fs_setup() {
+	int blk_num = SB_BLK;
+	//Check size of SB
+	if (!size(&blk_num)) {
+		init_fs();
+	}
+	if (!inmem_flag) {
+		load_inode_bm();
+		load_data_bm();
+	}
 }
 
 /**********************************************************************
